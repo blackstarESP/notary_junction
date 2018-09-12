@@ -42,7 +42,11 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :company_name, length: { maximum: 30 }
+  validates :home_phone, length: { maximum: 12 }
+  validates :work_phone, length: { maximum: 12 }
+  validates :mobile_phone, length: { maximum: 12 }
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password, confirmation: true
   validates :zip_code, format: { with: /^\d{5}(-\d{4})?$/, on: :create }
 
