@@ -48,7 +48,7 @@ class User < ApplicationRecord
   validates :mobile_phone, length: { maximum: 12 }
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password, confirmation: true
-  validates :zip_code, format: { with: /^\d{5}(-\d{4})?$/, on: :create }
+  validates :zip_code, format: { with: /\d{5}(-\d{4})?$/, on: :create }
 
   has_and_belongs_to_many :specializations
 end
