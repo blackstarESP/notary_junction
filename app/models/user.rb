@@ -46,9 +46,10 @@ class User < ApplicationRecord
   validates :home_phone, length: { maximum: 12 }
   validates :work_phone, length: { maximum: 12 }
   validates :mobile_phone, length: { maximum: 12 }
-  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password, confirmation: true
-  validates :zip_code, format: { with: /\d{5}(-\d{4})?$/, on: :create }
+  validates :zip_code, format: { with: /\A[0-9]{5}(?:-[0-9]{4})?\z/, on: :create }
 
   has_and_belongs_to_many :specializations
+  has_one :profile
 end
