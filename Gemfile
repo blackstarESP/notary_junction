@@ -17,6 +17,10 @@ gem 'annotate', '~> 2.7', '>= 2.7.4'
 gem 'devise', '~> 4.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# Awesome debugger
+gem 'pry', '~> 0.11.3'
+# For beautifully organized postgres results
+gem 'hirb', '~> 0.7.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
