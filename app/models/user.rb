@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# The User class is the basic model that tracks information of all users of
-# this application
-
 # == Schema Information
 #
 # Table name: users
@@ -22,17 +19,12 @@
 #  updated_at             :datetime         not null
 #  first_name             :string
 #  last_name              :string
-#  company_name           :string
-#  home_phone             :string
-#  work_phone             :string
-#  mobile_phone           :string
-#  website_url            :string
-#  address                :string
-#  city                   :string
-#  state                  :string
-#  zip_code               :string
 #  system_id              :string
+#  user_type              :string
 #
+
+# The User class is the basic model that tracks information of all users of
+# this application
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -40,16 +32,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  validates :first_name, presence: true, length: { maximum: 20 }
-  validates :last_name, presence: true, length: { maximum: 20 }
-  validates :company_name, length: { maximum: 30 }
-  validates :home_phone, length: { maximum: 12 }
-  validates :work_phone, length: { maximum: 12 }
-  validates :mobile_phone, length: { maximum: 12 }
-  validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  validates :password, confirmation: true
-  validates :zip_code, format: { with: /\A[0-9]{5}(?:-[0-9]{4})?\z/, on: :create }
+  validates :first_name, :last_name, :user_type, presence: true
+  validates :email, email: { strict_mode: true },
+                    uniqueness: { case_sensitive: false }
+  validates :system_id, uniqueness: { case_sensitive: false },
+                        length: { is: 10 }
 
   has_and_belongs_to_many :specializations
-  has_one :profile
 end

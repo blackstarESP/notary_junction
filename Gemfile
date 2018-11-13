@@ -21,6 +21,10 @@ gem 'puma', '~> 3.11'
 gem 'pry', '~> 0.11.3'
 # For beautifully organized postgres results
 gem 'hirb', '~> 0.7.3'
+# For validating URL on user model
+gem 'validate_url', '~> 1.0', '>= 1.0.2'
+# Allows email validation in models
+gem 'email_validator', '~> 1.6', require: 'email_validator/strict'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
