@@ -2,6 +2,7 @@
 
 # The Specialization class contains all the necessary information about the
 # possible user specialziations available for customers to choose from
+
 # == Schema Information
 #
 # Table name: specializations

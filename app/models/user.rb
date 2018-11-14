@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# The User class is the basic model that tracks information of all users of
+# this application
+
 # == Schema Information
 #
 # Table name: users
@@ -23,9 +26,6 @@
 #  user_type              :string
 #
 
-# The User class is the basic model that tracks information of all users of
-# this application
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -39,4 +39,5 @@ class User < ApplicationRecord
                         length: { is: 10 }
 
   has_and_belongs_to_many :specializations
+  has_many :educations, dependent: :destroy
 end
