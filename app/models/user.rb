@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # The User class is the basic model that tracks information of all users of
-# this application
+#  this application
 
 # == Schema Information
 #
@@ -24,6 +24,7 @@
 #  last_name              :string
 #  system_id              :string
 #  user_type              :string
+#  company_id             :bigint(8)
 #
 
 class User < ApplicationRecord
@@ -39,5 +40,6 @@ class User < ApplicationRecord
                         length: { is: 10 }
 
   has_and_belongs_to_many :specializations
-  has_many :educations, dependent: :destroy
+  has_many :education_records, dependent: :destroy
+  belongs_to :company
 end

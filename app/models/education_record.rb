@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # The EducationRecord class contains all school, degree, and fields of
-# study information about system users. This table stores optional info
-# that users can enter from the Education section of their user profiles.
+#  study information about system users. This table stores optional info
+#  that users can enter from the Education section of their user profiles.
 
 # == Schema Information
 #

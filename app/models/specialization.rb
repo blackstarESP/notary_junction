@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # The Specialization class contains all the necessary information about the
-# possible user specialziations available for customers to choose from
+#  possible user specialziations available for customers to choose from
 
 # == Schema Information
 #
