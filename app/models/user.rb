@@ -2,7 +2,6 @@
 
 # The User class is the basic model that tracks information of all users of
 #  this application
-
 # == Schema Information
 #
 # Table name: users
@@ -24,7 +23,6 @@
 #  last_name              :string
 #  system_id              :string
 #  user_type              :string
-#  company_id             :bigint(8)
 #
 
 class User < ApplicationRecord
@@ -33,13 +31,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  validates :first_name, :last_name, :user_type, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :password, presence: true
+  validates :user_type, presence: true
+  validates :encrypted_password, presence: true
   validates :email, email: { strict_mode: true },
                     uniqueness: { case_sensitive: false }
   validates :system_id, uniqueness: { case_sensitive: false },
                         length: { is: 10 }
-
-  has_and_belongs_to_many :specializations
-  has_many :education_records, dependent: :destroy
-  belongs_to :company
 end

@@ -19,7 +19,6 @@
 #  last_name              :string
 #  system_id              :string
 #  user_type              :string
-#  company_id             :bigint(8)
 #
 
 require 'rails_helper'
