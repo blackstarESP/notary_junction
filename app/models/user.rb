@@ -2,6 +2,7 @@
 
 # The User class is the basic model that tracks information of all users of
 #  this application
+
 # == Schema Information
 #
 # Table name: users
@@ -26,18 +27,39 @@
 #
 
 class User < ApplicationRecord
+  before_validation :set_system_id
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :password, presence: true
-  validates :user_type, presence: true
-  validates :encrypted_password, presence: true
-  validates :email, email: { strict_mode: true },
-                    uniqueness: { case_sensitive: false }
-  validates :system_id, uniqueness: { case_sensitive: false },
-                        length: { is: 10 }
+  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+                                                   message: "can only have
+                                                             upper and lower
+                                                             case letters."
+                                                 }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+                                                   message: "can only have
+                                                              upper and lower
+                                                              case letters."
+                                                }
+  validates :password, presence: true,
+                       format: { with: /\A(?=.*[a-zA-Z])
+                                          (?=.*[0-9])
+                                          (?=.*[!@#$%^&*()]).{6,}+\z/,
+                                 message: "should be stronger. Make sure your
+                                           password is at least 6 characters
+                                           long, contains a capital letter,
+                                           a lower case letter, and a special
+                                           character."
+                                }
+  # validates :user_type, presence: true
+  validates :email, email: { strict_mode: true }
+  validates :system_id, uniqueness: true, length: { is: 10 }
+
+  private
+
+  def set_system_id
+    self.system_id = SecureRandom.hex(5).upcase
+  end
 end
