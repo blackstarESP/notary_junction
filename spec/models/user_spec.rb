@@ -27,12 +27,15 @@ RSpec.describe User, type: :model do
 
   # Association validations
   it { should validate_presence_of(:first_name) }
+  it { should allow_value('Firstname').for(:first_name) }
   it { should validate_presence_of(:last_name) }
+  it { should allow_value('Lastname').for(:last_name) }
   it { should validate_presence_of(:user_type) }
-  it { should validate_uniqueness_of(:system_id).ignoring_case_sensitivity }
+  it { should validate_presence_of(:password) }
+  it { should allow_value('Ie#7ddrm').for(:password) }
   it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
+  it { should validate_confirmation_of(:email) }
 
   # Associations
-  it { should have_and_belong_to_many(:specializations) }
 
 end

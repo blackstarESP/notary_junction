@@ -31,9 +31,14 @@
     <%= f.text_field :last_name %>
   </div>
 
+  <div class="field">
+    <%= f.label "Are you a notary or a signing agency?" %><br />
+    <%= f.select(:user_type, [['Notary'], ['Signing Agency']]) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+<%= params.inspect %>
 <%= render "devise/shared/links" %>

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     get 'register', to: 'devise/registrations#new'
     get 'logout', to: 'devise/sessions#destroy'
   end
+  get 'users', to: 'users#index'
 end

@@ -44,18 +44,15 @@ class User < ApplicationRecord
                                                               case letters."
                                                 }
   validates :password, presence: true,
-                       format: { with: /\A(?=.*[a-zA-Z])
-                                          (?=.*[0-9])
-                                          (?=.*[!@#$%^&*()]).{6,}+\z/,
+                       format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{6,}\z/,
                                  message: "should be stronger. Make sure your
                                            password is at least 6 characters
-                                           long, contains a capital letter,
-                                           a lower case letter, and a special
-                                           character."
+                                           long, contains at least 1 capital
+                                           letter, 1 lower case letter, and 1
+                                           special character."
                                 }
-  # validates :user_type, presence: true
-  validates :email, email: { strict_mode: true }
-  validates :system_id, uniqueness: true, length: { is: 10 }
+  validates :user_type, presence: true
+  validates :email, email: { strict_mode: true }, confirmation: true
 
   private
 
