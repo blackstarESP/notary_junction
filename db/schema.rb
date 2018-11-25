@@ -10,19 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_060812) do
+ActiveRecord::Schema.define(version: 2018_11_24_005105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "user_home_addresses", force: :cascade do |t|
-    t.string "home_address"
-    t.string "home_unit"
-    t.string "home_city"
-    t.string "home_state"
-    t.string "home_zip_code"
-    t.decimal "home_lat", precision: 10, scale: 6
-    t.decimal "home_lon", precision: 10, scale: 6
+  create_table "addresses", force: :cascade do |t|
+    t.string "address_name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.decimal "lat", precision: 10, scale: 7
+    t.decimal "lon", precision: 11, scale: 7
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "background_checks", force: :cascade do |t|
+    t.string "provider"
+    t.string "description"
+    t.string "expiration"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_background_checks_on_user_id"
+  end
+
+  create_table "certifications", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "expiration"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_certifications_on_user_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "school"
+    t.string "level"
+    t.string "field"
+    t.string "gpa"
+    t.integer "year_graduated"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "insurances", force: :cascade do |t|
+    t.string "provider"
+    t.string "type"
+    t.decimal "amount", precision: 9, scale: 2
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_insurances_on_user_id"
+  end
+
+  create_table "phone_numbers", force: :cascade do |t|
+    t.string "number_for"
+    t.boolean "mark_as_primary"
+    t.integer "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phone_numbers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,3 +1,0 @@
-validates :zip_code, format: {
-    with: /\A[0-9]{5}(?:-[0-9]{4})?\z/, on: :create
-  }

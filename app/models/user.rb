@@ -28,11 +28,24 @@
 
 class User < ApplicationRecord
   before_validation :set_system_id
+
+  # Associations
+  has_many :addresses
+  has_many :phone_numbers
+  has_many :educations
+  has_many :insurances
+  has_many :certifications
+  has_one :background_check
+
+  accepts_nested_attributes_for :addresses, :phone_numbers, :educations,
+                                :insurances, :certifications, :background_check
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
+  # Validations
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
                                                    message: "can only have
                                                              upper and lower

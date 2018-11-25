@@ -1,0 +1,3 @@
+<h1>Profile page for <%= @user.first_name+' '+@user.last_name %></h1>
+
+<%= link_to 'Create Address', address_path, method: :post, remote: true, class: 'add_address' %>
