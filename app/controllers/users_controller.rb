@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @addresses = @user.addresses.all
+    # binding.pry
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 end

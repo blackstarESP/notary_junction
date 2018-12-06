@@ -15,6 +15,10 @@ gem 'rubocop', '~> 0.59.0'
 gem 'annotate', '~> 2.7', '>= 2.7.4'
 # Authentication
 gem 'devise', '~> 4.5'
+# jQuery
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+# Font Awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Awesome debugger

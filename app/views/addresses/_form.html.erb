@@ -1,0 +1,22 @@
+<%= form_with model: address, id: "new_address_form" do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class = "fields">
+    <%= form.label "Address name" %>
+    <%= form.select(:address_type, [['Work'], ['Office'], ['Other']]) %>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
