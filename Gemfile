@@ -11,6 +11,8 @@ gem 'rails', '~> 5.2.1'
 gem 'pg', '~> 1.1', '>= 1.1.3'
 # For clean syntax
 gem 'rubocop', '~> 0.59.0'
+# For clean HTML
+gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
 # Helpful annotation tool
 gem 'annotate', '~> 2.7', '>= 2.7.4'
 # Authentication
