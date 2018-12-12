@@ -14,6 +14,9 @@
 //= require bootstrap.js
 //= require mdb.js
 //= require popper.min
+//= require sweetalert.min
+//= require collapsible.js
+//= require custom
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

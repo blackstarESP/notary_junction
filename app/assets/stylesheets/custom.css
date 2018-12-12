@@ -1,0 +1,28 @@
+.view {
+    background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
+    background-size: cover;
+}
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+nav {
+    border-bottom: 1px solid #78909c;
+}
+
+@media only screen and (min-width: 990px) {
+  nav {
+    height: 100px;
+    padding-left: 75px !important;
+    padding-right: 75px !important;
+  }
+}
+
+.bold-btn-link {
+    font-weight: bold;
+    color: white !important;
+}
+

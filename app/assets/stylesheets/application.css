@@ -13,7 +13,6 @@
  *= require bootstrap.css
  *= require mdb.css
  *= require font-awesome
- *= require custom
  *= require_tree .
  *= require_self
  */

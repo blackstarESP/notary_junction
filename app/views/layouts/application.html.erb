@@ -9,9 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: 'defer'  %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= yield %>
   </body>
 </html>

@@ -1,126 +1,71 @@
 <!--Main Navigation-->
 <header>
-  <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
-
-  <!-- Navbar brand -->
-  <a class="navbar-brand" href="#">Navbar</a>
-
-  <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="basicExampleNav">
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark unique-color-dark">
+    <a class="navbar-brand" href="#"><strong>Notary Junction</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Forums</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Agency Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+      <% if user_signed_in? %>
+        <%= link_to "Log Out", logout_path, class: "btn btn-blue-grey bold-btn-link", method: :delete %>
+        <%= link_to "Edit Your Profile", register_path, class: "btn warning-color-dark bold-btn-link" %>
+      <% else %>
+        <%= link_to "Log In", login_path, class: "btn btn-blue-grey bold-btn-link" %>
+        <%= link_to "Free Registration", register_path, class: "btn warning-color-dark bold-btn-link" %>
+      <% end %>
+    </div>
+  </nav>
+  <div class="view intro-2">
+    <div class="full-bg-img">
+      <div class="mask rgba-black-light flex-center">
+        <div class="container text-center white-text">
+          <div class="white-text text-center wow fadeInUp">
+            <h2>This Navbar is fixed</h2>
+            <h5>It will always stay visible on the top, even when you scroll down</h5>
+            <br>
+            <p>Full page intro with background image will be always displayed in full screen mode, regardless
+              of device </p>
+          </div>
         </div>
-      </li>
-
-    </ul>
-    <!-- Links -->
-
-    <form class="form-inline">
-      <div class="md-form my-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       </div>
-    </form>
+    </div>
   </div>
-  <!-- Collapsible content -->
-
-</nav>
-<!--/.Navbar-->
 </header>
 <!--Main Navigation-->
 
+
+
 <!--Main layout-->
 <main>
-  <!--Main container-->
-<div class="container">
-
-    <!--Grid row-->
-    <div class="row">
-
-        <!--Grid column-->
-        <div class="col-md-7">
-
-
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-5">
-
-
-
-        </div>
-        <!--Grid column-->
-
-    </div>
-    <!--Grid row-->
-
-    <!--Grid row-->
-    <div class="row">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12">
-
-
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6">
-
-
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6">
-
-
-
-        </div>
-        <!--Grid column-->
-
-    </div>
-    <!--Grid row-->
-
-</div>
-<!--Main container-->
 
 </main>
 <!--Main layout-->
 
+
+
+
 <!--Footer-->
 <footer>
-
 </footer>
 <!--Footer-->
