@@ -26,11 +26,15 @@
         </li>
       </ul>
       <% if user_signed_in? %>
-        <%= link_to "Log Out", logout_path, class: "btn btn-blue-grey bold-btn-link", method: :delete %>
-        <%= link_to "Edit Your Profile", register_path, class: "btn warning-color-dark bold-btn-link" %>
+        <%= link_to "Log Out", logout_path, class: "btn light-blue accent-3 bold-btn-link", method: :delete %>
+        <%= link_to "Edit Your Profile", register_path, class: "btn peach-gradient bold-btn-link" %>
       <% else %>
-        <%= link_to "Log In", login_path, class: "btn btn-blue-grey bold-btn-link" %>
-        <%= link_to "Free Registration", register_path, class: "btn warning-color-dark bold-btn-link" %>
+        <%= link_to login_path, class: "btn blue-gradient bold-btn-link" do %>
+        <i class="fa fa-dashboard white-text fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log In
+        <% end %>
+        <%= link_to register_path, class: "btn peach-gradient bold-btn-link" do %>
+        <i class="fa fa-handshake-o white-text fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Free Registration
+        <% end %>
       <% end %>
     </div>
   </nav>
