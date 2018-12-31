@@ -9,6 +9,14 @@ body,
   height: 100%;
 }
 
+h1, h2 {
+  color: rgb(66, 133, 244) !important;
+}
+
+.team-section {
+  background-color: #e5e5e5;
+}
+
 nav {
     border-bottom: 1px solid #78909c;
 }
@@ -21,13 +29,6 @@ nav {
   }
 }
 
-.bold-btn-link {
-    font-weight: bold;
-    color: white !important;
+hr {
+  background-color: #f2f2f2 !important;
 }
-
-.fw-section {
-  margin: 0 auto;
-  width: 100%;
-}
-
