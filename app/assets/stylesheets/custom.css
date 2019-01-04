@@ -13,10 +13,6 @@ h1, h2 {
   color: rgb(66, 133, 244) !important;
 }
 
-.team-section {
-  background-color: #e5e5e5;
-}
-
 nav {
     border-bottom: 1px solid #78909c;
 }
@@ -31,4 +27,29 @@ nav {
 
 hr {
   background-color: #f2f2f2 !important;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+.full-width {
+  margin: 0 -9999rem;
+  padding: 0.25rem 9999rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.registration-item-premium {
+  background: transparent;
+  border-color: #ff8800;
+}
+
+.registration-item-basic {
+  background: transparent;
+  border-color: #2bbbad;
+}
+
+.registration-item-free {
+  background: transparent;
+  border-color: #4285f4;
 }
