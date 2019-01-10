@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NotaryJunction</title>
+    <title>Notary Junction</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: 'defer'  %>
   </head>
-
   <body class="<%= controller_name %> <%= action_name %>">
+    <%= render 'layouts/navigation' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

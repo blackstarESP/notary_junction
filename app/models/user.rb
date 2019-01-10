@@ -27,7 +27,13 @@
 #
 
 class User < ApplicationRecord
+  acts_as_token_authenticatable
   before_validation :set_system_id
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :trackable
 
   # Associations
   has_many :addresses
@@ -39,11 +45,6 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :addresses, :phone_numbers, :educations,
                                 :insurances, :certifications, :background_check
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
 
   # Validations
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
@@ -64,7 +65,7 @@ class User < ApplicationRecord
                                            letter, 1 lower case letter, and 1
                                            special character."
                                 }
-  validates :user_type, presence: true
+  # validates :user_type, presence: true
   validates :email, email: { strict_mode: true }, confirmation: true
 
   private

@@ -25,6 +25,8 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'puma', '~> 3.11'
 # Awesome debugger
 gem 'pry', '~> 0.11.3'
+# For token authentication
+gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
 # For beautifully organized postgres results
 gem 'hirb', '~> 0.7.3'
 # For validating URL on user model

@@ -1,37 +1,41 @@
+<header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark unique-color-dark">
-  <a class="navbar-brand" href="#"><strong>Notary Junction</strong></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Resources</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Agency Reviews</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Support</a>
-      </li>
-    </ul>
-    <% if user_signed_in? %>
-      <%= link_to "Log Out", logout_path, class: "btn light-blue accent-3 bold-btn-link", method: :delete %>
-      <%= link_to "Edit Your Profile", register_path, class: "btn peach-gradient bold-btn-link" %>
-    <% else %>
-      <%= link_to login_path do %>
-        <button type="button" class="btn btn-primary waves-effect btn-md font-weight-bold"><i class="fa fa-sign-in left" aria-hidden="true"></i> Login</button>
+    <a class="navbar-brand" href="#"><strong>Notary Junction</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Agency Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Support</a>
+        </li>
+      </ul>
+      <% if user_signed_in? %>
+        <%= link_to logout_path, method: :delete do %>
+          <button type="button" class="btn btn-primary waves-effect btn-md font-weight-bold"><i class="fa fa-sign-out left" aria-hidden="true"></i> Log Out</button>
+        <% end %>
+        <button type="button" class="btn btn-warning waves-effect btn-md font-weight-bold"><i class="fa fa-list-ul left" aria-hidden="true"></i> Edit Your Profile</button>
+      <% else %>
+        <%= link_to login_path do %>
+          <button type="button" class="btn btn-primary waves-effect btn-md font-weight-bold"><i class="fa fa-sign-in left" aria-hidden="true"></i> Log In</button>
+        <% end %>
+        <%= link_to register_path do %>
+          <button type="button" class="btn btn-warning waves-effect btn-md font-weight-bold"><i class="fa fa-list-ul left" aria-hidden="true"></i> Get Listed for Free</button>
+        <% end %>
       <% end %>
-      <%= link_to register_path do %>
-        <button type="button" class="btn btn-warning waves-effect btn-md font-weight-bold"><i class="fa fa-list-ul left" aria-hidden="true"></i> Get Listed for Free</button>
-      <% end %>
-    <% end %>
-  </div>
-</nav>
+    </div>
+  </nav>
+</header>
