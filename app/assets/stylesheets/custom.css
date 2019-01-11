@@ -53,3 +53,17 @@ html, body {
   background: transparent;
   border-color: #4285f4;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.registration-error-list li:before {
+  text-decoration: none;
+  font-family: 'FontAwesome';
+  content: '\f105';
+  color: rgb(66, 133, 244);
+  font-weight: bold;
+  margin-left: -5%;
+  padding-right: 1%;
+}
