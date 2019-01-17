@@ -24,16 +24,18 @@
         </li>
       </ul>
       <% if user_signed_in? %>
-        <%= link_to logout_path, method: :delete do %>
-          <button type="button" class="btn btn-primary waves-effect btn-md font-weight-bold"><i class="fa fa-sign-out left" aria-hidden="true"></i> Log Out</button>
+        <%= link_to logout_path, class: "btn btn-primary waves-effect btn-md font-weight-bold", method: :delete do %>
+          <i class="fa fa-sign-out left" aria-hidden="true"></i> Log Out
         <% end %>
-        <button type="button" class="btn btn-warning waves-effect btn-md font-weight-bold"><i class="fa fa-list-ul left" aria-hidden="true"></i> Edit Your Profile</button>
+        <%= link_to "", class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
+          <i class="fa fa-list-ul left" aria-hidden="true"></i> Edit Your Profile
+        <% end %>
       <% else %>
-        <%= link_to login_path do %>
-          <button type="button" class="btn btn-primary waves-effect btn-md font-weight-bold"><i class="fa fa-sign-in left" aria-hidden="true"></i> Log In</button>
+        <%= link_to login_path, class: "btn btn-primary waves-effect btn-md font-weight-bold" do %>
+          <i class="fa fa-sign-in left" aria-hidden="true"></i> Log In
         <% end %>
-        <%= link_to register_path do %>
-          <button type="button" class="btn btn-warning waves-effect btn-md font-weight-bold"><i class="fa fa-list-ul left" aria-hidden="true"></i> Get Listed for Free</button>
+        <%= link_to register_path, class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
+          <i class="fa fa-list-ul left" aria-hidden="true"></i> Get Listed for Free
         <% end %>
       <% end %>
     </div>
