@@ -1,39 +1,48 @@
-<h2>Free sign up</h2>
-<%= form_for(User.new, as: resource_name, 
-                       url: registration_path(resource_name),
-                       remote: true,
-                       format: :json) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(User.new,
+  as: resource_name, 
+  url: registration_path(resource_name),
+  remote: true,
+  format: :json) do |f| 
+%>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div id="registration-errors"></div>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="md-form">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <%= f.email_field :email, id: "free-registration-email", class: "form-control" %>
+    <%= f.label :email, for: "free-registration-email" %>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+  <div class="md-form">
+    <i class="fa fa-user prefix grey-text"></i>
+    <%= f.text_field :first_name, id: "free-registration-firstname", class: "form-control" %>
+    <%= f.label :first_name, for: "free-registration-firstname" %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
+  <div class="md-form mb">
+    <i class="fa fa-user prefix grey-text"></i>
+    <%= f.text_field :last_name, id: "free-registration-lastname", class: "form-control" %>
+    <%= f.label :last_name, for: "free-registration-lastname" %>
   </div>
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <%= f.password_field :password, id: "free-registration-pass", class: "form-control" %>
+    <%= f.label :password, for: "free-registration-pass" %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <%= f.password_field :password_confirmation, id: "free-registration-pass-conf", class: "form-control" %>
+    <%= f.label :password_confirmation, for: "free-registration-pass-conf" %>
   </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="md-form form-check">
+    <div>I'm registering as a:</div>
+    <%= f.radio_button :user_type, "Notary", id: "free-registration-user-type-notary", class: "form-check-input mr-5" %>
+    <%= f.label :user_type, "Notary", for: "free-registration-user-type-notary", class: "form-check-label mr-5" %>
+    <%= f.radio_button :user_type, "Agency", id: "free-registration-user-type-agency", class: "form-check-input ml-5" %>
+    <%= f.label :user_type, "Agency", for: "free-registration-user-type-agency", class: "form-check-label ml-5" %>
+  </div>
+  <%= f.hidden_field :registration_type, value: "free" %>
+  <div class="modal-footer d-flex justify-content-center">
+    <%= f.submit "Sign me up", class: "btn btn-primary" %>
   </div>
 <% end %>
-<%= render "devise/shared/links" %>

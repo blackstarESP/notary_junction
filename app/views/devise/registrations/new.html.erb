@@ -16,6 +16,12 @@
         </h5>
       </p>
     </section>
+
+
+
+
+
+
     <section class="my-5">
       <h2 class="text-center my-5">Powerful features that <strong><i>grow</i></strong> your notary business</h2>
       <p class="lead grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
@@ -65,7 +71,6 @@
               </p>
             </div>
           </div>
-          >
         </div>
       </div>
       <div class="row mt-5">
@@ -116,6 +121,15 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
     <section class="team-section text-center my-5 p-5">
       <h2 class="text-center">What some of our notaries are saying</h2>
       <p class="dark-grey-text w-responsive mx-auto mb-5">
@@ -186,6 +200,13 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
     <section class="feature-comparison my-5">
       <h2 class="text-center my-5">Whatever your goals, we've got a plan for you</h2>
       <p class="lead grey-text text-center w-responsive mx-auto mb-5">
@@ -267,6 +288,15 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
     <section class="registration-options">
       <h2 class="text-center my-5">Start growing your notary business today.</h2>
       <p class="lead grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
@@ -286,7 +316,8 @@
                     <li class="list-group-item registration-item-free">Free notary resource access</li>
                   </ul>
                 </p>
-                <%= link_to "", class: "btn btn-primary font-weight-bold free-registration-btn", data: { toggle: "modal", target: "#darkModalForm" } do %>
+                <%= link_to "", class: "btn btn-primary font-weight-bold free-registration-btn", data: { toggle: "modal", 
+                  target: "#free-registration-modal" } do %>
                   <i class="fa fa-user-plus left"></i> Sign up for free
                 <% end %>
               </div>
@@ -306,7 +337,8 @@
                     <li class="list-group-item registration-item-basic">3</li>
                   </ul>
                 </p>
-                <%= link_to "", class: "btn btn-default font-weight-bold basic-registration-btn", data: { toggle: "modal", target: "#darkModalForm" } do %>
+                <%= link_to "", class: "btn btn-default font-weight-bold basic-registration-btn", data: { toggle: "modal", 
+                  target: "#basic-registration-modal" } do %>
                   <i class="fa fa-user-plus left"></i> Sign up for basic
                 <% end %>
               </div>
@@ -326,7 +358,8 @@
                     <li class="list-group-item registration-item-premium">Plus <strong>24/7</strong> real-time notary support</li>
                   </ul>
                 </p>
-                <%= link_to "", class: "btn btn-warning font-weight-bold premium-registration-btn", data: { toggle: "modal", target: "#darkModalForm" } do %>
+                <%= link_to "", class: "btn btn-warning font-weight-bold premium-btn", data: { toggle: "modal", 
+                  target: "#premium-registration-modal" } do %>
                   <i class="fa fa-user-plus left"></i> Sign up for premium
                 <% end %>
               </div>
@@ -337,83 +370,75 @@
     </section>
 
     <section>
-      <!-- Modal -->
-<div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+
+<div class="modal fade" id="free-registration-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog form-dark" role="document">
-    <!--Content-->
-    <div class="modal-content card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
-      <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-        <!--Header-->
-        <div class="modal-header text-center pb-4">
-          <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong></strong></h3>
-          <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <!--Body-->
-        <div class="modal-body">
-
-          <!--Body-->
-          <div class="md-form mb-5">
-            <input type="email" id="Form-email5" class="form-control validate white-text">
-            <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
-          </div>
-
-          <div class="md-form pb-3">
-            <input type="password" id="Form-pass5" class="form-control validate white-text">
-            <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
-            <div class="form-group mt-4">
-              <input class="form-check-input" type="checkbox" id="checkbox624">
-              <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#" class="green-text font-weight-bold">
-                  Terms and Conditions</a></label>
-            </div>
-          </div>
-
-          <!--Grid row-->
-          <div class="row d-flex align-items-center mb-4">
-
-            <!--Grid column-->
-            <div class="text-center mb-3 col-md-12">
-              <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
-            </div>
-            <!--Grid column-->
-
-          </div>
-          <!--Grid row-->
-
-          <!--Grid row-->
-          <div class="row">
-
-            <!--Grid column-->
-            <div class="col-md-12">
-              <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold">
-                  Log in</a></p>
-            </div>
-            <!--Grid column-->
-
-          </div>
-          <!--Grid row-->
-
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold black-text">Free Membership</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <%= render 'registration_free' %>
       </div>
     </div>
-    <!--/.Content-->
   </div>
 </div>
-<!-- Modal -->
+
+
+<div class="modal fade" id="basic-registration-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <%= render 'registration_basic' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="premium-registration-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <%= render 'registration_premium' %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">Launch modal
-    register Form</a>
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+    Modal Register Form</a>
 </div>
+
+
+
+
+
+
+
+
+
+
+
     </section>
-
-<section>
-  <%= render 'registration_free' %>
-</section>
-
-
-
   </div>
 </main>

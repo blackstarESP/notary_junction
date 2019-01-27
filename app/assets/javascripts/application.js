@@ -16,6 +16,7 @@
 //= require popper.min
 //= require sweetalert.min
 //= require collapsible.js
+//= require jquery.validate
 //= require custom
 //= require rails-ujs
 //= require activestorage
