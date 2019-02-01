@@ -27,8 +27,6 @@ gem 'stripe'
 gem 'puma', '~> 3.11'
 # Awesome debugger
 gem 'pry', '~> 0.11.3'
-# For token authentication
-gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
 # For beautifully organized postgres results
 gem 'hirb', '~> 0.7.3'
 # For validating URL on user model
@@ -54,7 +52,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

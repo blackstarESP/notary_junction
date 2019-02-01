@@ -5,11 +5,11 @@
         <h5 class="mb-1">Register for free</h5>
       </li>
       <li class="list-inline-item">
-        <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
+        <%= link_to "Sign up!", new_user_registration_path, class: "btn btn-outline-white btn-rounded" %>
       </li>
     </ul>
   </div>
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center py-3">© Copyright 2018-<%= Time.new.year %> //
+    <%= link_to " Reliable Signings", root_path, class: "font-weight-bold" %>
   </div>
 </footer>

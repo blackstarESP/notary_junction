@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddressesController < ApplicationController
   def new
     @address = Address.new

@@ -24,17 +24,17 @@
         </li>
       </ul>
       <% if user_signed_in? %>
-        <%= link_to logout_path, class: "btn btn-primary waves-effect btn-md font-weight-bold", method: :delete do %>
+        <%= link_to destroy_user_session_path, class: "btn btn-primary waves-effect btn-md font-weight-bold", method: :delete do %>
           <i class="fa fa-sign-out left" aria-hidden="true"></i> Log Out
         <% end %>
         <%= link_to "", class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
           <i class="fa fa-list-ul left" aria-hidden="true"></i> Edit Your Profile
         <% end %>
       <% else %>
-        <%= link_to login_path, class: "btn btn-primary waves-effect btn-md font-weight-bold" do %>
+        <%= link_to user_session_path, class: "btn btn-primary waves-effect btn-md font-weight-bold" do %>
           <i class="fa fa-sign-in left" aria-hidden="true"></i> Log In
         <% end %>
-        <%= link_to register_path, class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
+        <%= link_to new_user_registration_path, class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
           <i class="fa fa-list-ul left" aria-hidden="true"></i> Get Listed for Free
         <% end %>
       <% end %>

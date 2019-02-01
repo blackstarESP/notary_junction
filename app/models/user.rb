@@ -27,7 +27,6 @@
 #
 
 class User < ApplicationRecord
-  acts_as_token_authenticatable
   before_validation :set_system_id
 
   # Include default devise modules. Others available are:

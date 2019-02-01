@@ -36,7 +36,8 @@
   </div>
   <div class="md-form form-check">
     <div>I'm registering as a:</div>
-    <%= f.radio_button :user_type, "Notary", id: "free-registration-user-type-notary", class: "form-check-input mr-5" %>
+    <%= f.radio_button :user_type, "Notary", id: "free-registration-user-type-notary", class: "form-check-input mr-5",
+                        checked: true %>
     <%= f.label :user_type, "Notary", for: "free-registration-user-type-notary", class: "form-check-label mr-5" %>
     <%= f.radio_button :user_type, "Agency", id: "free-registration-user-type-agency", class: "form-check-input ml-5" %>
     <%= f.label :user_type, "Agency", for: "free-registration-user-type-agency", class: "form-check-label ml-5" %>
