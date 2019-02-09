@@ -1,0 +1,63 @@
+<div class="container pt-5 pb-5">
+  <h1 class="mt-5 mb-5 pt-5">Pricing</h1>
+  <section>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+          <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+            <div>
+              <h5 class="text-default"><i class="fa fa-chart-pie"></i> Marketing</h5>
+              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                Odit sed qui, dolorum!.</p>
+              <% if user_signed_in? %>
+                <%= link_to new_subscription_path(plan: "monthly_basic", plan_id: Rails.application.credentials.monthly_basic), class: "btn btn-default" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Monthly
+                <% end %>
+                <%= link_to new_subscription_path(plan: "annual_basic", plan_id: Rails.application.credentials.annual_basic), class: "btn btn-default" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Annually
+                <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path, class: "btn btn-default" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Monthly
+                <% end %>
+                <%= link_to new_user_registration_path, class: "btn btn-default" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Annually
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+          <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+            <div>
+              <h5 class="text-warning"><i class="fa fa-chart-pie"></i> Marketing</h5>
+              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                Odit sed qui, dolorum!.</p>
+                <% if user_signed_in? %>
+                <%= link_to new_subscription_path(plan: "monthly_premium", plan_id: Rails.application.credentials.monthly_premium), class: "btn btn-warning" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Monthly
+                <% end %>
+                <%= link_to new_subscription_path(plan: "annual_premium", plan_id: Rails.application.credentials.annual_premium), class: "btn btn-warning" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Annually
+                <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path, class: "btn btn-warning" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Monthly
+                <% end %>
+                <%= link_to new_user_registration_path, class: "btn btn-warning" do %>
+                  <i class="fa fa-clone left"></i> Subscribe Annually
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

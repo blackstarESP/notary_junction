@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notary Junction</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload', defer: 'defer'  %>
+    <%= tag :meta, name: "stripe_key", content: Rails.application.credentials.stripe_publishable_key %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <%= render 'layouts/subscribe_navigation' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

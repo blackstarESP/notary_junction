@@ -41,6 +41,7 @@ class User < ApplicationRecord
   has_many :insurances
   has_many :certifications
   has_one :background_check
+  has_one_attached :thumbnail
 
   accepts_nested_attributes_for :addresses, :phone_numbers, :educations,
                                 :insurances, :certifications, :background_check
@@ -64,12 +65,18 @@ class User < ApplicationRecord
                                            letter, 1 lower case letter, and 1
                                            special character."
                                 }
-  # validates :user_type, presence: true
+  validates :user_type, presence: true
   validates :email, email: { strict_mode: true }, confirmation: true
 
-  private
+  protected
 
   def set_system_id
     self.system_id = SecureRandom.hex(5).upcase
+  end
+
+  private
+
+  def subscribed?
+    stripe_subscription_id.present?
   end
 end
