@@ -11,14 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap.js
+//= require bootstrap
 //= require mdb.js
 //= require popper.min
 //= require sweetalert.min
-//= require collapsible.js
+//= require collapsible
 //= require jquery.validate
-//= require custom
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery-readyselector
 //= require_tree .

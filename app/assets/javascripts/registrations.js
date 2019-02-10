@@ -1,4 +1,4 @@
-$(".registrations new").ready(function() {
+$(".registrations.new").ready(function() {
   addEventListener('ajax:error', function(event) {
       var detail = event.detail;
       var data = detail[0], status = detail[1], xhr = detail[2];
