@@ -48,3 +48,8 @@ ul {
   color: rgb(66, 133, 244);
   font-weight: bold;
 }
+
+.msg {
+  margin-top: 5% !important;
+  margin-bottom: -7% !important;
+}

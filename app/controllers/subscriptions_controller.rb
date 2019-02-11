@@ -3,8 +3,8 @@ class SubscriptionsController < ApplicationController
 	layout "subscribe"
 
 	def new
-    @plan = params[:plan]
-    @plan_id = params[:plan_id]
+    #@plan = params[:plan]
+    #@plan_id = params[:plan_id]
 	end
 
   def create
@@ -36,7 +36,8 @@ class SubscriptionsController < ApplicationController
 
     current_user.update(options)
 
-    redirect_to root_path, notice: "You have been successfully subscribed and your plan is now active."
+    flash[:success] = "You have been successfully subscribed and your plan is now active."
+    redirect_to root_path
   end
 
   def destroy
