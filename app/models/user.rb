@@ -47,16 +47,16 @@ class User < ApplicationRecord
                                 :insurances, :certifications, :background_check
 
   # Validations
-  #validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-   #                                                message: "can only have
-    #                                                         upper and lower
-     #                                                        case letters."
-      #                                           }
-  #validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-   #                                                message: "can only have
-    #                                                          upper and lower
-     #                                                         case letters."
-      #                                          }
+  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+                                                   message: "can only have
+                                                             upper and lower
+                                                             case letters."
+                                                 }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+                                                   message: "can only have
+                                                              upper and lower
+                                                              case letters."
+                                                }
   validates :password, presence: true,
                        format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{6,}\z/,
                                  message: "should be stronger. Make sure your
@@ -65,18 +65,12 @@ class User < ApplicationRecord
                                            letter, 1 lower case letter, and 1
                                            special character."
                                 }
-  #validates :user_type, presence: true
+  validates :user_type, presence: true
   validates :email, email: { strict_mode: true }, confirmation: true
 
   protected
 
   def set_system_id
     self.system_id = SecureRandom.hex(5).upcase
-  end
-
-  private
-
-  def subscribed?
-    stripe_subscription_id.present?
   end
 end

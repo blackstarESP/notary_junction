@@ -63,7 +63,7 @@ $(".subscriptions.new").ready(function() {
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
 
-      ["type", "last_4", "exp_month", "exp_year"].forEach(function(field) {
+      ["brand", "last4", "exp_month", "exp_year"].forEach(function(field) {
         addCardField(form, token, field);
       });
 

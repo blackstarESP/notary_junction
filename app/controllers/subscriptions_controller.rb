@@ -3,8 +3,13 @@ class SubscriptionsController < ApplicationController
 	layout "subscribe"
 
 	def new
-    #@plan = params[:plan]
-    #@plan_id = params[:plan_id]
+    if user_signed_in? and current_user.subscribed?
+      flash[:warning] = "Looks like you're already subscribed!"
+      redirect_to root_path
+    else
+      @plan = params[:plan]
+      @plan_id = params[:plan_id]
+    end
 	end
 
   def create
@@ -13,11 +18,11 @@ class SubscriptionsController < ApplicationController
     plan = Stripe::Plan.retrieve(plan_id)
     token = params[:stripeToken]
 
-    if current_user.stripe_id?
-      customer = Stripe::Customer.retrieve(current_user.stripe_id)
-    else
-      customer = Stripe::Customer.create(email: current_user.email, source: token)
-    end
+    customer = if current_user.stripe_id?
+                Stripe::Customer.retrieve(current_user.stripe_id)
+               else
+                Stripe::Customer.create(email: current_user.email, source: token)
+               end
 
     subscription = customer.subscriptions.create(plan: plan.id)
 
@@ -28,14 +33,13 @@ class SubscriptionsController < ApplicationController
     }
 
     options.merge!(
-      card_last_4: params[:user][:card_last_4],
+      card_last4: params[:user][:card_last4],
       card_exp_month: params[:user][:card_exp_month],
       card_exp_year: params[:user][:card_exp_year],
-      card_type: params[:user][:card_type]
-    ) if params[:user][:card_last_4]
-
+      card_type: params[:user][:card_brand]
+    ) if params[:user][:card_last4]
     current_user.update(options)
-
+    binding.pry
     flash[:success] = "You have been successfully subscribed and your plan is now active."
     redirect_to root_path
   end

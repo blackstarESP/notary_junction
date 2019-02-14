@@ -1,5 +1,4 @@
-$(".registrations.new").ready(function() {
-  addEventListener('ajax:error', function(event) {
+/* addEventListener('ajax:error', function(event) {
       var detail = event.detail;
       var data = detail[0], status = detail[1], xhr = detail[2];
 
@@ -32,5 +31,4 @@ $(".registrations.new").ready(function() {
       var infoArray = JSON.parse(xhr.responseText)['first_name'];
       
       alert(infoArray);
-    });
-});
+    }); */
