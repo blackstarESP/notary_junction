@@ -13,7 +13,10 @@ module NotaryJunction
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # Add font, image and other assets paths for MD MDBootstrap
+    # Add lib path for custom classes to load
+    config.autoload_paths << Rails.root.join('lib')
+
+    # Add font, image and other assets paths for MDBootstrap
     config.assets.paths << Rails.root.join("app", "assets", "font", "roboto")
     config.assets.paths << Rails.root.join("vendor", "assets", "img")
     config.assets.paths << Rails.root.join("vendor", "assets", "mdb-addons")

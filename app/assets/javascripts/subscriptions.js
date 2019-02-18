@@ -67,7 +67,8 @@ $(".subscriptions.new").ready(function() {
         addCardField(form, token, field);
       });
 
-      form.submit();    };
+      form.submit();    
+    };
 
     function addCardField(form, token, field) {
       let hiddenInput = document.createElement('input');

@@ -64,7 +64,7 @@ class User < ApplicationRecord
                                            long, contains at least 1 capital
                                            letter, 1 lower case letter, and 1
                                            special character."
-                                }
+                                }, on: :create
   validates :user_type, presence: true
   validates :email, email: { strict_mode: true }, confirmation: true
 

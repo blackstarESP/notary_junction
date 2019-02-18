@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
 
 	def new
     if user_signed_in? and current_user.subscribed?
-      flash[:warning] = "Looks like you're already subscribed!"
+      flash[:warning] = "Looks like you're already subscribed! Want to change your plan? Visit your profile page to make changes."
       redirect_to root_path
     else
       @plan = params[:plan]
@@ -38,8 +38,8 @@ class SubscriptionsController < ApplicationController
       card_exp_year: params[:user][:card_exp_year],
       card_type: params[:user][:card_brand]
     ) if params[:user][:card_last4]
+
     current_user.update(options)
-    binding.pry
     flash[:success] = "You have been successfully subscribed and your plan is now active."
     redirect_to root_path
   end
@@ -52,5 +52,4 @@ class SubscriptionsController < ApplicationController
 
     redirect_to root_path, notice: "Your subscription has been cancelled."
   end
-
 end
