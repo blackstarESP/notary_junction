@@ -29,6 +29,7 @@ class SubscriptionsController < ApplicationController
     options = {
       stripe_id: customer.id,
       stripe_subscription_id: subscription.id,
+      plan_name: subscription.plan.nickname,
       subscribed: true
     }
 

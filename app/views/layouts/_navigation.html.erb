@@ -27,7 +27,7 @@
         <%= link_to destroy_user_session_path, class: "btn btn-indigo waves-effect btn-md font-weight-bold", method: :delete do %>
           <i class="fa fa-sign-out left" aria-hidden="true"></i> Log Out
         <% end %>
-        <%= link_to "", class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
+        <%= link_to user_path(current_user), class: "btn btn-warning waves-effect btn-md font-weight-bold" do %>
           <i class="fa fa-list-ul left" aria-hidden="true"></i> Edit Your Profile
         <% end %>
       <% else %>

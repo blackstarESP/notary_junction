@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :pricing, only: [:index]
   resources :subscriptions
+  resources :users
 end
