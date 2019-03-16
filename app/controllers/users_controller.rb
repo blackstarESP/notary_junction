@@ -7,11 +7,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @plan_name = if current_user.plan_name.present?
-                   "the " + current_user.plan_name + " plan."
-                 else
-                   "the free plan. Upgrade now to unlock more market coverage and profile visiblity."
-                 end
+    if user_signed_in?
+      if current_user.subscription.present?
+        @subscription = current_user.subscription
+        @plan_name = @subscription.plan_name
+      else
+        @plan_name = "Monthly Free"
+      end
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def edit

@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-	before_action :authenticate_user!, except: [:new, :create]
+	# before_action :authenticate_user!, except: [:new, :create]  Check for subscribed before edit
 	layout "subscribe"
 
 	def new
@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
       flash[:warning] = "Looks like you're already subscribed! Want to change your plan? Visit your profile page to make changes."
       redirect_to root_path
     else
+      @subscription = Subscription.new
       @plan = params[:plan]
       @plan_id = params[:plan_id]
     end
@@ -18,8 +19,8 @@ class SubscriptionsController < ApplicationController
     plan = Stripe::Plan.retrieve(plan_id)
     token = params[:stripeToken]
 
-    customer = if current_user.stripe_id?
-                Stripe::Customer.retrieve(current_user.stripe_id)
+    customer = if current_user.subscription.present?
+                Stripe::Customer.retrieve(current_user.subscription.stripe_id)
                else
                 Stripe::Customer.create(email: current_user.email, source: token)
                end
@@ -30,19 +31,31 @@ class SubscriptionsController < ApplicationController
       stripe_id: customer.id,
       stripe_subscription_id: subscription.id,
       plan_name: subscription.plan.nickname,
-      subscribed: true
     }
 
     options.merge!(
-      card_last4: params[:user][:card_last4],
-      card_exp_month: params[:user][:card_exp_month],
-      card_exp_year: params[:user][:card_exp_year],
-      card_type: params[:user][:card_brand]
-    ) if params[:user][:card_last4]
-
-    current_user.update(options)
+      card_last4: params[:subscription][:card_last4],
+      card_exp_month: params[:subscription][:card_exp_month],
+      card_exp_year: params[:subscription][:card_exp_year],
+      card_type: params[:subscription][:card_brand]
+    ) if params[:subscription][:card_last4]
+    
+    current_user.subscribed = true
+    @subscription = Subscription.create(user_id: current_user.id)
+    @subscription.update(options)
+    @subscription.save
     flash[:success] = "You have been successfully subscribed and your plan is now active."
     redirect_to root_path
+  end
+
+  def edit
+    Stripe.api_key = Rails.application.credentials.stripe_secret_key
+    @subscription = current_user.subscription
+    @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
+    binding.pry
+  end
+
+  def update
   end
 
   def destroy

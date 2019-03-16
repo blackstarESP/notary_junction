@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_015029) do
+ActiveRecord::Schema.define(version: 2019_03_03_212804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,20 @@ ActiveRecord::Schema.define(version: 2019_02_24_015029) do
     t.index ["user_id"], name: "index_phone_numbers_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "stripe_id"
+    t.string "stripe_subscription_id"
+    t.integer "card_last4"
+    t.integer "card_exp_month"
+    t.integer "card_exp_year"
+    t.string "card_type"
+    t.string "plan_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -121,15 +135,8 @@ ActiveRecord::Schema.define(version: 2019_02_24_015029) do
     t.string "last_name"
     t.string "system_id"
     t.string "user_type"
-    t.string "stripe_id"
-    t.string "stripe_subscription_id"
-    t.integer "card_last4"
-    t.integer "card_exp_month"
-    t.integer "card_exp_year"
-    t.string "card_type"
     t.boolean "subscribed", default: false, null: false
     t.boolean "admin", default: false, null: false
-    t.string "plan_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["system_id"], name: "index_users_on_system_id", unique: true

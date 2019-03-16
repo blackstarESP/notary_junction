@@ -41,6 +41,7 @@ class User < ApplicationRecord
   has_many :insurances
   has_many :certifications
   has_one :background_check
+  has_one :subscription
   has_one_attached :thumbnail
 
   accepts_nested_attributes_for :addresses, :phone_numbers, :educations,
