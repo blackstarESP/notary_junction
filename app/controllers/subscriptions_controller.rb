@@ -40,19 +40,21 @@ class SubscriptionsController < ApplicationController
       card_type: params[:subscription][:card_brand]
     ) if params[:subscription][:card_last4]
     
-    current_user.subscribed = true
     @subscription = Subscription.create(user_id: current_user.id)
     @subscription.update(options)
-    @subscription.save
-    flash[:success] = "You have been successfully subscribed and your plan is now active."
-    redirect_to root_path
+    if @subscription.save
+      current_user.subscribed = true
+      current_user.save
+      flash[:success] = "You have been successfully subscribed and your plan is now active."
+      redirect_to root_path
+    end
   end
 
   def edit
     Stripe.api_key = Rails.application.credentials.stripe_secret_key
     @subscription = current_user.subscription
     @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
-    binding.pry
+    #binding.pry
   end
 
   def update
