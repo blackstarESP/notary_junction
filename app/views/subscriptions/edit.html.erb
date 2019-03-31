@@ -1,4 +1,9 @@
 <section class="mt-5 p-5 text-center">
-  <h1 class="text-center mt-5">Edit</h1>
-  <p>Your current plan is <%= @subscription.plan_name %></p>
+  <h1 class="text-center mt-5">Select the plan you'd like to change to</h1>
+  <p>Your current plan is <%= @current_plan %></p>
+  <% @available_plans.each do |plan| %>
+    <%= link_to subscription_path(plan: plan.name), class: "btn btn-default", method: :patch do %>
+      <i class="fa fa-clone left"></i> Change to <%= plan.name %>
+    <% end %>
+  <% end %>
 </section>

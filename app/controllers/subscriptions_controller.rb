@@ -53,19 +53,46 @@ class SubscriptionsController < ApplicationController
   def edit
     Stripe.api_key = Rails.application.credentials.stripe_secret_key
     @subscription = current_user.subscription
+    @current_plan = @subscription.plan_name
+    @available_plans = Plan.select{ |plan| plan.name != @current_plan }
     @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
     #binding.pry
   end
 
   def update
+    @new_plan = params[:plan]
+    @stripe_subscription_id = current_user.subscription.stripe_subscription_id
+    @new_plan_id = if @new_plan == "Monthly Basic"
+                     Rails.application.credentials.monthly_basic
+                   elsif @new_plan == "Monthly Premium"
+                     Rails.application.credentials.monthly_premium
+                   elsif @new_plan == "Annual Basic"
+                     Rails.application.credentials.annual_basic
+                   else
+                     Rails.application.credentials.annual_premium
+                   end
+    subscription = Stripe::Subscription.retrieve(@stripe_subscription_id)
+    Stripe::Subscription.update(@stripe_subscription_id,
+    {
+      cancel_at_period_end: false,
+      items: [
+        {
+          id: subscription.items.data[0].id,
+          plan: @new_plan_id,
+        }
+      ],
+    }
+    )
+    # need to to update PG with new sub info
+    binding.pry
   end
-
+  
+  # need to test this
   def destroy
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
     current_user.update(stripe_subscription_id: nil)
     current_user.subscribed = false
-
     redirect_to root_path, notice: "Your subscription has been cancelled."
   end
 end
