@@ -12,7 +12,7 @@ en:
       invalid: "Bad %{authentication_keys} / Password combination. Give it another shot."
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "We can find a you in our database! Have you registered yet?"
+      not_found_in_database: "We can't find you in our database. Have you registered yet?"
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your email address before continuing."

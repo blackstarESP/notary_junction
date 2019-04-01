@@ -56,12 +56,12 @@ class SubscriptionsController < ApplicationController
     @current_plan = @subscription.plan_name
     @available_plans = Plan.select{ |plan| plan.name != @current_plan }
     @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
-    #binding.pry
   end
 
   def update
     @new_plan = params[:plan]
-    @stripe_subscription_id = current_user.subscription.stripe_subscription_id
+    @subscription = current_user.subscription
+    @stripe_subscription_id = @subscription.stripe_subscription_id
     @new_plan_id = if @new_plan == "Monthly Basic"
                      Rails.application.credentials.monthly_basic
                    elsif @new_plan == "Monthly Premium"
@@ -83,8 +83,12 @@ class SubscriptionsController < ApplicationController
       ],
     }
     )
-    # need to to update PG with new sub info
-    binding.pry
+    if @subscription.update(plan_name: @new_plan)
+      flash[:success] = "You're subscription has been updated to #{@new_plan}."
+      redirect_to user_path(current_user)
+    else
+      flash[:danger] = "There was a problem saving your subscription. Please contact support."
+    end
   end
   
   # need to test this
