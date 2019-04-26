@@ -52,10 +52,14 @@ class SubscriptionsController < ApplicationController
 
   def edit
     Stripe.api_key = Rails.application.credentials.stripe_secret_key
-    @subscription = current_user.subscription
-    @current_plan = @subscription.plan_name
-    @available_plans = Plan.select{ |plan| plan.name != @current_plan }
-    @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
+    if current_user.subscription.present?
+      @subscription = current_user.subscription
+      @current_plan = @subscription.plan_name
+      @available_plans = Plan.select{ |plan| plan.name != @current_plan }
+      @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
+    else
+      @available_plans = Plan.all
+    end
   end
 
   def update

@@ -1,13 +1,15 @@
 <section class="pt-5 mt-5">
-	<h1>Profile page for <%= current_user.first_name+' '+ current_user.last_name %></h1>
+	<h1>Profile page for <%= @user.first_name + ' ' + @user.last_name %></h1>
   
   <section class="profile-info">
     Stuff
   </section>
 
-	<% if user_signed_in? %>
+	<% if @authorized %>
   <section class="plan-info">
-    <%= button_to "Edit My Profile", edit_user_path, method: :get %><br />
+    <%= button_to "Edit My Profile", edit_user_path, class: "btn btn-primary btn-sm", method: :get %>
+    <%= button_to "Edit My Billing Information", edit_user_path, class: "btn btn-primary btn-sm", method: :get %>
+    <%= button_to "Change My Subscription", edit_subscription_path, class: "btn btn-primary btn-sm", method: :get %>
     <div>Your current plan is <%= @plan_name %> </div>
   </section>
 	<% end %>

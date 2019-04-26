@@ -1,7 +1,6 @@
 $(".subscriptions.new").ready(function() {
   addEventListener("turbolinks:load", function() {
     const publishableKey = document.querySelector("meta[name='stripe_key']").getAttribute('content');
-    console.log(publishableKey);
     const stripe = Stripe(publishableKey);
 
     const elements = stripe.elements({
@@ -13,15 +12,15 @@ $(".subscriptions.new").ready(function() {
 
     const style = {
       base: {
-        color: "#32325d",
+        color: "#32325D",
         fontWeight: 500,
-        fontFamily: "Roboto, sans-serif",
+        fontFamily: "Inter UI, Open Sans, Segoe UI, sans-serif",
         fontSize: "16px",
         fontSmoothing: "antialiased",
 
         "::placeholder": {
-          color: "#CFD7DF"
-        } 
+          color: "#323edw"
+        }
       },
       invalid: {
         color: "#E25950"

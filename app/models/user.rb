@@ -48,6 +48,7 @@ class User < ApplicationRecord
                                 :insurances, :certifications, :background_check
 
   # Validations
+=begin
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
                                                    message: "can only have
                                                              upper and lower
@@ -68,7 +69,7 @@ class User < ApplicationRecord
                                 }, on: :create
   validates :user_type, presence: true
   validates :email, email: { strict_mode: true }, confirmation: true
-
+=end
   protected
 
   def set_system_id

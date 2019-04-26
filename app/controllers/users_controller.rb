@@ -7,15 +7,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    if user_signed_in?
-      if current_user.subscription.present?
-        @subscription = current_user.subscription
-        @plan_name = @subscription.plan_name
+    if user_signed_in? && current_user.id == params[:id].to_i
+      @user = current_user
+      @authorized = true
+      if @user.subscription.present?
+        @plan_name = @user.subscription.plan_name
       else
-        @plan_name = "Monthly Free"
+        @plan_name = "Free Plan"
       end
     else
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
     end
   end
 
