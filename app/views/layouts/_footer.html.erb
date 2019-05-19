@@ -2,10 +2,19 @@
   <div class="container">
     <ul class="list-unstyled list-inline text-center py-2">
       <li class="list-inline-item">
-        <h5 class="mb-1">Register for free</h5>
+        <h5 class="mb-1">
+          <% if user_signed_in? %>
+          Make sure your profile is up to date!</h5>
+          <% else %>
+          Already a RS client?</h5>
+          <% end %>
       </li>
       <li class="list-inline-item">
-        <%= link_to "Sign up!", new_user_registration_path, class: "btn btn-outline-white btn-rounded" %>
+        <% if user_signed_in? %>
+        <%= link_to "Edit My Profile", user_path(current_user), class: "btn btn-outline-white btn-rounded" %>
+        <% else %>
+        <%= link_to "Log in", user_session_path, class: "btn btn-outline-white btn-rounded" %>
+        <% end %>
       </li>
     </ul>
   </div>

@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
 	layout "subscribe"
 
 	def new
-    if user_signed_in? and current_user.subscribed?
+    if user_signed_in? && current_user.subscribed?
       flash[:warning] = "Looks like you're already subscribed! Want to change your plan? Visit your profile page to make changes."
       redirect_to root_path
     else
@@ -59,11 +59,13 @@ class SubscriptionsController < ApplicationController
       @customer = Stripe::Customer.retrieve(current_user.subscription.stripe_id)
     else
       @available_plans = Plan.all
+      @current_plan = "the Free Basic monthly plan"
     end
   end
 
   def update
     @new_plan = params[:plan]
+    current_user.subscription.present?
     @subscription = current_user.subscription
     @stripe_subscription_id = @subscription.stripe_subscription_id
     @new_plan_id = if @new_plan == "Monthly Basic"

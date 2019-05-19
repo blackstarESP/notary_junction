@@ -7,9 +7,16 @@
 
 	<% if @authorized %>
   <section class="plan-info">
-    <%= button_to "Edit My Profile", edit_user_path, class: "btn btn-primary btn-sm", method: :get %>
+    <%= button_to "Edit My Profile Information", edit_user_path, class: "btn btn-primary btn-sm", method: :get %>
     <%= button_to "Edit My Billing Information", edit_user_path, class: "btn btn-primary btn-sm", method: :get %>
-    <%= button_to "Change My Subscription", edit_subscription_path, class: "btn btn-primary btn-sm", method: :get %>
-    <div>Your current plan is <%= @plan_name %> </div>
+    <% if current_user.subscription.present? %>
+    <div>Your current plan is <%= @plan_name %>.<br>
+         <%= link_to "Change your subscription", edit_subscription_path %>
+    </div>
+    <% else %>
+    <div>It doesn't look like you have an active subscription yet. To get started, take a look at our
+      <%= link_to "affordable plans", pricing_index_path %>.
+    </div> 
+    <% end %>
   </section>
 	<% end %>

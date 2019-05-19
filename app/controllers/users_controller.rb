@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       if @user.subscription.present?
         @plan_name = @user.subscription.plan_name
       else
-        @plan_name = "Free Plan"
+        @plan_name = "the Free Basic monthly plan"
       end
     else
       @user = User.find_by(id: params[:id])
