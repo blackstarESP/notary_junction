@@ -4,7 +4,8 @@ class SubscriptionsController < ApplicationController
 
 	def new
     if user_signed_in? && current_user.subscribed?
-      flash[:warning] = "Looks like you're already subscribed! Want to change your plan? Visit your profile page to make changes."
+      flash[:warning] = "Looks like you're already subscribed! Want to change your plan? 
+                         Visit your profile page to make changes."
       redirect_to root_path
     else
       @subscription = Subscription.new
@@ -15,8 +16,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     Stripe.api_key = Rails.application.credentials.stripe_secret_key
-    plan_id = params[:plan_id]
-    plan = Stripe::Plan.retrieve(plan_id)
+    plan = Stripe::Plan.retrieve(@plan_id)
     token = params[:stripeToken]
 
     customer = if current_user.subscription.present?
@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
                 Stripe::Customer.create(email: current_user.email, source: token)
                end
 
-    subscription = customer.subscriptions.create(plan: plan.id)
+    subscription = customer.subscriptions.create(plan: @plan.id)
 
     options = {
       stripe_id: customer.id,
@@ -47,6 +47,10 @@ class SubscriptionsController < ApplicationController
       current_user.save
       flash[:success] = "You have been successfully subscribed and your plan is now active."
       redirect_to root_path
+    else
+      flash[:success] = "There was a problem when we tried to subscribe you. Please try again, or contact
+                         support for assistance."
+      redirect_to new_subscription_path
     end
   end
 
@@ -93,7 +97,7 @@ class SubscriptionsController < ApplicationController
       flash[:success] = "You're subscription has been updated to #{@new_plan}."
       redirect_to user_path(current_user)
     else
-      flash[:danger] = "There was a problem saving your subscription. Please contact support."
+      flash[:danger] = "There was a problem updating your subscription. Please contact support."
     end
   end
   
