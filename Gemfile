@@ -16,7 +16,7 @@ gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
 # Helpful annotation tool
 gem 'annotate', '~> 2.7', '>= 2.7.4'
 # Authentication
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.7'
 # Font Awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 # jQuery
