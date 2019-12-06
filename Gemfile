@@ -24,7 +24,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 # Stripe payment processing
 gem 'stripe'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Awesome debugger
 gem 'pry', '~> 0.11.3'
 # For beautifully organized postgres results
